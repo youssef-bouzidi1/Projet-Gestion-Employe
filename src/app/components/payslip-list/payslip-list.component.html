@@ -1,0 +1,42 @@
+<div class="payslip-list">
+    <div class="header">
+        <h2>Bulletins de salaire</h2>
+        <button *ngIf="authService.isHR()" mat-raised-button color="primary" (click)="generatePayslips()">
+            Générer les bulletins de salaire
+        </button>
+    </div>
+    
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <mat-table [dataSource]="payslips" *ngIf="!loading || payslips.length > 0">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let payslip">{{payslip.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="paymentDate">
+            <mat-header-cell *matHeaderCellDef>Date de paiement</mat-header-cell>
+            <mat-cell *matCellDef="let payslip">{{payslip.paymentDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="netSalary">
+            <mat-header-cell *matHeaderCellDef>Salaire net</mat-header-cell>
+            <mat-cell *matCellDef="let payslip">{{payslip.netSalary}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let payslip">
+                <button mat-icon-button color="primary" (click)="showPayslipDetails(payslip.id)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+       
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+     <div *ngIf="!loading && payslips.length === 0">
+        <p>Aucun bulletin de salaire disponible.</p>
+    </div>
+</div>

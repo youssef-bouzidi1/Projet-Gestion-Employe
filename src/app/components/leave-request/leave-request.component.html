@@ -1,0 +1,100 @@
+<div class="leave-request-container">
+  <div class="leave-request-card" *ngIf="authService.isEmployee()">
+    <h2>Request Leave</h2>
+    <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Leave Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of leaveTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Reason</mat-label>
+        <textarea matInput formControlName="reason" rows="3"></textarea>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!leaveForm.valid">
+          Request Leave
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="leave-requests-card" *ngIf="authService.isHR()">
+    <h2>Leave Requests</h2>
+    <div class="table-responsive">
+      <mat-table [dataSource]="leaves" class="leave-table">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *matCellDef="let leave" class="id-column">{{leave.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+          <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
+          <mat-cell *matCellDef="let leave">{{leave.startDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="endDate">
+          <mat-header-cell *matHeaderCellDef>End Date</mat-header-cell>
+          <mat-cell *matCellDef="let leave">{{leave.endDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *matCellDef="let leave">{{leave.type}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell *matCellDef="let leave">
+            <span [ngClass]="{'status-pending': leave.status === 'PENDING',
+                           'status-approved': leave.status === 'APPROVED',
+                           'status-rejected': leave.status === 'REJECTED'}">
+              {{leave.status}}
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <mat-header-cell *matHeaderCellDef>Reason</mat-header-cell>
+          <mat-cell *matCellDef="let leave" class="reason-column">{{leave.reason}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef class="actions-header">Actions</mat-header-cell>
+          <mat-cell *matCellDef="let leave" class="actions-column">
+            <ng-container *ngIf="leave.status === 'PENDING'">
+              <button mat-icon-button color="primary" (click)="approveLeave(leave.id)" aria-label="Approve">
+                <mat-icon>check</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="rejectLeave(leave.id)" aria-label="Reject">
+                <mat-icon>close</mat-icon>
+              </button>
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>

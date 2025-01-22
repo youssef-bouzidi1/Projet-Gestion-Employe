@@ -1,0 +1,101 @@
+<!-- employee-dashboard.component.html -->
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Tableau de bord de l'employé</h1>
+    <button mat-button class="profile-button" routerLink="/employee/profile">
+      <mat-icon>account_circle</mat-icon>
+      <span>Voir le profil</span>
+    </button>
+  </header>
+
+  <!-- Section Actions rapides -->
+  <section class="quick-actions">
+    <div class="actions-grid">
+      <mat-card class="action-card leave-card" routerLink="/employee/leave-requests">
+        <mat-card-content>
+          <div class="card-icon-wrapper leave-icon">
+            <mat-icon>event_busy</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Demander un congé</h3>
+            <p>Soumettre une nouvelle demande de congé</p>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card payslip-card" routerLink="/employee/payslips">
+        <mat-card-content>
+          <div class="card-icon-wrapper payslip-icon">
+            <mat-icon>receipt</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Voir les bulletins de salaire</h3>
+            <p>Accéder à vos documents de salaire</p>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card profile-card" routerLink="/employee/profile">
+        <mat-card-content>
+          <div class="card-icon-wrapper profile-icon">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Mettre à jour le profil</h3>
+            <p>Gérer vos informations</p>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Sections du tableau de bord -->
+  <section class="dashboard-sections">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>schedule</mat-icon>
+        <mat-card-title>Demandes de congé récentes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let leave of recentLeaveRequests" class="leave-item">
+            <div class="leave-item-content">
+              <div class="leave-details">
+                <span class="leave-type">{{leave.type}}</span>
+                <span class="leave-dates">{{leave.startDate | date}} - {{leave.endDate | date}}</span>
+              </div>
+              <span [class]="'status-badge status-' + leave.status.toLowerCase()">
+                {{leave.status}}
+              </span>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>receipt_long</mat-icon>
+        <mat-card-title>Bulletins de salaire récents</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let payslip of recentPayslips" class="payslip-item">
+            <div class="payslip-item-content">
+              <div class="payslip-details">
+                <span class="payslip-period">{{payslip.period | date:'MMMM yyyy'}}</span>
+                <span class="payslip-amount">{{payslip.netAmount | currency}}</span>
+              </div>
+              <button mat-icon-button color="primary" class="download-button">
+                <mat-icon>download</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

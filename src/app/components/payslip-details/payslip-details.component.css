@@ -1,0 +1,29 @@
+/* src/app/components/payslip/payslip-details/payslip-details.component.css */
+.payslip-details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.payslip-details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.payslip-details mat-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* src/app/components/payslip/payslip-list/payslip-list.component.css */
+.payslip-list {
+    padding: 20px;
+}
+
+.payslip-list h2 {
+    margin-bottom: 20px;
+}
+.payslip-list mat-table{
+    width: 100%;
+}

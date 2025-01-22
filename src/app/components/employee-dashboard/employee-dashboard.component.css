@@ -1,0 +1,202 @@
+/* employee-dashboard.component.scss */
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0;
+  }
+
+  .profile-button {
+    gap: 0.5rem;
+  }
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.action-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    .arrow-icon {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+  }
+
+  mat-card-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+.card-icon-wrapper {
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.leave-icon {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.payslip-icon {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.profile-icon {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.card-content {
+  flex: 1;
+
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+}
+
+.arrow-icon {
+  opacity: 0;
+  transition: all 0.2s;
+  color: #6c757d;
+}
+
+.dashboard-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-card {
+  height: 100%;
+  
+  mat-card-header {
+    padding: 1rem 1rem 0;
+    
+    mat-icon {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 8px;
+      color: #1976d2;
+    }
+  }
+}
+
+.leave-item, .payslip-item {
+  border-bottom: 1px solid #eee;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.leave-item-content, .payslip-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+.leave-details, .payslip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.leave-type, .payslip-period {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.leave-dates, .payslip-amount {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status-approved {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-rejected {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.download-button {
+  color: #1976d2;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sections {
+    grid-template-columns: 1fr;
+  }
+}

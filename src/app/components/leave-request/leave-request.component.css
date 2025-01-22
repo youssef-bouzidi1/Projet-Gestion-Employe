@@ -1,0 +1,141 @@
+.leave-request-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leave-request-card,
+.leave-requests-card {
+  flex: 1 1 300px; /* Grow, shrink, basis */
+  min-width: 300px;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+/* Table Styling */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.leave-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.leave-table mat-header-cell {
+  font-weight: 500;
+  color: #555;
+  padding: 12px;
+  text-align: left;
+  background-color: #f9f9f9;
+  border-bottom: 2px solid #eee;
+}
+
+.leave-table mat-cell {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.leave-table mat-row:nth-child(even) {
+  background-color: #fbfbfb;
+}
+
+.leave-table mat-row:hover {
+  background-color: #f0f0f0;
+}
+
+/* Specific column styling for better readability */
+.id-column {
+  width: 60px;
+  color: #777;
+}
+
+.reason-column {
+  flex-grow: 1;
+}
+
+.actions-header,
+.actions-column {
+  text-align: center;
+  width: 120px;
+}
+
+.actions-column button {
+  margin: 0 4px;
+}
+
+/* Status badge styling */
+.status-pending {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #ffc107;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.status-approved {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.status-rejected {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #dc3545;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .leave-request-container {
+    flex-direction: column;
+  }
+
+  .leave-request-card,
+  .leave-requests-card {
+    min-width: auto;
+  }
+}

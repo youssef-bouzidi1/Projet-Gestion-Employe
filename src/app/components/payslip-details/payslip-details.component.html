@@ -1,0 +1,19 @@
+<!-- src/app/components/payslip/payslip-details/payslip-details.component.html -->
+<div class="payslip-details" *ngIf="payslip">
+    <h2>Détails du bulletin de salaire</h2>
+    <p><strong>ID :</strong> {{payslip.id}}</p>
+    <p><strong>ID Employé :</strong> {{payslip.employeeId}}</p>
+    <p><strong>Date de paiement :</strong> {{payslip.paymentDate | date}}</p>
+    <p><strong>Salaire de base :</strong> {{payslip.baseSalary}}</p>
+    <p><strong>Heures supplémentaires :</strong> {{payslip.overtimePay}}</p>
+    <p><strong>Primes :</strong> {{payslip.bonuses}}</p>
+    <p><strong>Déductions :</strong> {{payslip.deductions}}</p>
+    <p><strong>Salaire net :</strong> {{payslip.netSalary}}</p>
+    
+    <h3>Composants du salaire</h3>
+    <mat-list>
+        <mat-list-item *ngFor="let component of payslip.components">
+            {{component.name}} : {{component.amount}} ({{component.type}})
+        </mat-list-item>
+    </mat-list>
+</div>

@@ -1,0 +1,17 @@
+com\hrms\batch\repository\EmployeeRepository.class
+com\hrms\batch\service\SalaryCalculationService.class
+com\hrms\batch\config\JacksonConfig.class
+com\hrms\batch\jobs\SalaryCalculationJob.class
+com\hrms\batch\SalaryBatchServiceApplication.class
+com\hrms\batch\config\BatchSchemaConfig.class
+com\hrms\batch\scheduler\JobScheduler.class
+com\hrms\batch\config\FeignConfig.class
+com\hrms\batch\jobs\SalaryCalculationJob$1.class
+com\hrms\batch\service\SalaryServiceClient.class
+com\hrms\batch\config\BatchConfig.class
+com\hrms\batch\model\Employee.class
+com\hrms\batch\model\Salary.class
+com\hrms\batch\jobs\SalaryItemProcessor.class
+com\hrms\batch\controller\SalaryController.class
+com\hrms\batch\repository\SalaryRepository.class
+com\hrms\batch\service\EmployeeServiceClient.class

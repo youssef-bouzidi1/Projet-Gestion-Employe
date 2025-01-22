@@ -1,0 +1,74 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Tableau de bord RH</h1>
+  </header>
+
+  <section class="quick-actions">
+    <div class="actions-grid">
+      <mat-card class="action-card stat-card">
+        <mat-card-content>
+          <div class="card-icon-wrapper total-employees-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Nombre total d'employés</h3>
+            <p class="stat-value">{{totalEmployees}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card stat-card">
+        <mat-card-content>
+          <div class="card-icon-wrapper pending-leave-icon">
+            <mat-icon>notifications_active</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Demandes de congés en attente</h3>
+            <p class="stat-value">{{pendingLeaveRequests}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="quick-actions">
+    <h3>Actions rapides</h3>
+    <div class="actions-grid">
+      <mat-card class="action-card action-button-card" routerLink="/hr/employees/new">
+        <mat-card-content>
+          <div class="card-icon-wrapper add-employee-icon">
+            <mat-icon>person_add</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Ajouter un employé</h3>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card action-button-card" routerLink="/hr/leave-requests">
+        <mat-card-content>
+          <div class="card-icon-wrapper review-leave-icon">
+            <mat-icon>event_note</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Réexaminer les demandes de congés</h3>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card action-button-card" routerLink="/hr/payslips">
+        <mat-card-content>
+          <div class="card-icon-wrapper generate-payslip-icon">
+            <mat-icon>receipt</mat-icon>
+          </div>
+          <div class="card-content">
+            <h3>Générer des bulletins de paie</h3>
+          </div>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>
